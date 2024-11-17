@@ -40,7 +40,7 @@
 
 #include "Sounds\description.ext"
 
-//--- Header contains the mission tite.
+//--- Header contains the mission title.
 #include "Rsc\Header.hpp"
 
 //--- Styles
