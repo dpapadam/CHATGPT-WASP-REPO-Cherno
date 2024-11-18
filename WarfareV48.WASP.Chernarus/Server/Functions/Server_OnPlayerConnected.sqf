@@ -18,7 +18,7 @@ waitUntil {commonInitComplete && serverInitFull};
 //--- Skip this script if the server is trying to run this.
 if (_name == '__SERVER__' || _uid == '' || local player) exitWith {};
 
-//--- We try to get the player and it's group from the playableUnits.
+//--- We try to get the player and its group from the playableUnits.
 _max = 10;
 _team = grpNull;
 
@@ -27,7 +27,7 @@ while {_max > 0 && isNull _team} do {
 		if ((getPlayerUID _x) == _uid) exitWith {_team = group _x};
 	} forEach playableUnits;
 
-	if (isNull _team) then {sleep 10};
+	if (isNull _team) then {sleep 1};
 	_max = _max - 1;
 };
 
