@@ -4134,7 +4134,7 @@ class Mission
 					type="HeadlessClient_F";
 					leader=1;
 					skill=1;
-					init="this allowdamage false; this hideobject true; this setVariable ['sideJoined', civilian];";
+					init="this allowdamage false; this hideobject true;";
 					description="hc0";
 				};
 			};
@@ -4835,7 +4835,7 @@ class Mission
 					type="HeadlessClient_F";
 					leader=1;
 					skill=1;
-					init="this allowdamage false; this hideobject true; this setVariable ['sideJoined', civilian];";
+					init="this allowdamage false; this hideobject true;";
 					description="hc1";
 				};
 			};
@@ -4858,7 +4858,7 @@ class Mission
 					type="HeadlessClient_F";
 					leader=1;
 					skill=1;
-					init="this allowdamage false; this hideobject true; this setVariable ['sideJoined', civilian];";
+					init="this allowdamage false; this hideobject true;";
 					description="hc2";
 				};
 			};
