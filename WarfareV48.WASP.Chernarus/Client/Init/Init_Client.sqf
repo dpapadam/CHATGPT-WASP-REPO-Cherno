@@ -4,6 +4,7 @@ Private ['_HQRadio','_base','_buildings','_condition','_get','_idbl','_isDeploye
 
 sideJoined = side player;
 sideJoinedText = str sideJoined;
+
 //--- WF3 Compatible.
 WFBE_Client_SideJoined = sideJoined;
 WFBE_Client_SideJoinedText = sideJoinedText;

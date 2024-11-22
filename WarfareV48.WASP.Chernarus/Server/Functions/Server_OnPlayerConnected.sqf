@@ -13,7 +13,7 @@ _id = _this select 2;
 //--- Wait for a proper common & server initialization before going any further.
 waitUntil {commonInitComplete && serverInitFull};
 
-["INFORMATION", Format ["Server_PlayerConnected.sqf: Player [%1] [%2] has joined the game", _name, _uid]] Call WFBE_CO_FNC_LogContent;
+["INFORMATION", Format ["Server_OnPlayerConnected.sqf: Player [%1] [%2] has joined the game", _name, _uid]] Call WFBE_CO_FNC_LogContent;
 
 //--- Skip this script if the server is trying to run this.
 if (_name == '__SERVER__' || _uid == '' || local player) exitWith {};
@@ -32,11 +32,11 @@ while {_max > 0 && isNull _team} do {
 };
 
 //--- Make sure that we've found a team, otherwise we simply exit.
-if (isNull _team) exitWith {["WARNING", Format ["Server_PlayerConnected.sqf: Player [%1] [%2] is not defined within the warfare teams.", _name, _uid]] Call WFBE_CO_FNC_LogContent};
+if (isNull _team) exitWith {["WARNING", Format ["Server_OnPlayerConnected.sqf: Player [%1] [%2] is not defined within the warfare teams.", _name, _uid]] Call WFBE_CO_FNC_LogContent};
 
 //--- Make sure that our client is a warfare client, the side variable is only defined for warfare slots, otherwise we simply exit.
 _sideJoined = _team getVariable "wfbe_side";
-if (isNil '_sideJoined') exitWith {["WARNING", Format ["Server_PlayerConnected.sqf: Player [%1] [%2] side couldn't be determined from team [%3].", _name, _uid, _team]] Call WFBE_CO_FNC_LogContent};
+if (isNil '_sideJoined') exitWith {["WARNING", Format ["Server_OnPlayerConnected.sqf: Player [%1] [%2] side couldn't be determined from team [%3].", _name, _uid, _team]] Call WFBE_CO_FNC_LogContent};
 
 //--- We attempt to get the player informations in case that he joined before.
 _get = missionNamespace getVariable format["WFBE_JIP_USER%1",_uid];
@@ -50,7 +50,7 @@ if !(isNull(assignedVehicle (leader _team))) then {
 
 //--- If we choose not to keep the current units during this session, then we simply remove them.
 if ((missionNamespace getVariable "WFBE_C_AI_TEAMS_JIP_PRESERVE") == 0) then {
-	["INFORMATION", Format ["Server_PlayerConnected.sqf: Team [%1] units are now being removed for player [%1] [%2].", _team, _name, _uid]] Call WFBE_CO_FNC_LogContent;
+	["INFORMATION", Format ["Server_OnPlayerConnected.sqf: Team [%1] units are now being removed for player [%1] [%2].", _team, _name, _uid]] Call WFBE_CO_FNC_LogContent;
 	_units = units _team;
 	_units = _units + ([_team,false] Call GetTeamVehicles);
 	{if (!isPlayer _x && !(_x in playableUnits)) then {deleteVehicle _x}} forEach _units;
@@ -79,7 +79,7 @@ if (isNil '_get') exitWith {
 	missionNamespace setVariable [format["WFBE_JIP_USER%1",_uid], [_uid, 0, _sideJoined, _sideJoined, 0]];
 
 	_team setVariable ["wfbe_funds", missionNamespace getVariable format ["WFBE_C_ECONOMY_FUNDS_START_%1", _sideJoined], true];
-	["INFORMATION", Format ["Server_PlayerConnected.sqf: Team [%1] Leader [%2] JIP Information have been stored for the first time.", _team, _uid]] Call WFBE_CO_FNC_LogContent;
+	["INFORMATION", Format ["Server_OnPlayerConnected.sqf: Team [%1] Leader [%2] JIP Information have been stored for the first time.", _team, _uid]] Call WFBE_CO_FNC_LogContent;
 };
 
 //--- The player has already joined the session previously, we just need to update the informations.

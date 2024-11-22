@@ -117,10 +117,16 @@ switch (_args select 0) do {
 		(_args select 1) Spawn WFBE_SE_FNC_OnHQKilled;
 	};
 	case "connected-hc": {
-		Private ["_hc","_id","_uid"];
+		Private ["_hc", "_id", "_uid"];
 		_hc = _args select 1;
+
+		// Wait until getPlayerUID returns a valid UID (non-null) for the headless client
+		waitUntil {
+			_uid = getPlayerUID _hc;
+			!isNil "_uid" && {_uid != "" && {_uid != "null"}}
+		};
+
 		_id = owner _hc;
-		_uid = getPlayerUID _hc;
 
 		["INFORMATION", Format["Server_HandleSpecial.sqf: Headless client is now connected [%1] [%2] with Owner ID [%3].", _hc, _uid, _id]] Call WFBE_CO_FNC_LogContent;
 
@@ -128,6 +134,12 @@ switch (_args select 0) do {
 			//--- Add the Headless client to our candidates.
 			missionNamespace setVariable [Format["WFBE_HEADLESS_%1", _uid], group _hc];
 			missionNamespace setVariable ["WFBE_HEADLESSCLIENTS_ID", (missionNamespace getVariable "WFBE_HEADLESSCLIENTS_ID") + [group _hc]];
+			
+			diag_log format ["DEBUG: _hc = %1", _hc];
+			diag_log format ["DEBUG: _args = %1", _args];
+			diag_log format ["DEBUG: _id = %1", _id];
+			diag_log format ["DEBUG: _uid = %1", _uid];
+			
 		} else {
 			["WARNING", Format["Server_HandleSpecial.sqf: Headless client [%1] Owner ID is [0], it is server controlled.",_hc]] Call WFBE_CO_FNC_LogContent;
 		};

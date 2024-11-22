@@ -35,7 +35,7 @@ for '_i' from 0 to 3 do {diag_log "################################"};
 townModeSet = false;
 
 WFBE_CO_FNC_LogContent = Compile preprocessFileLineNumbers "Common\Functions\Common_LogContent.sqf"; //--- Define the log function earlier.
-WFBE_LogLevel = 0; //--- Logging level (0: Trivial, 1: Information, 2: Warnnings, 3: Errors).
+WFBE_LogLevel = 0; //--- Logging level (0: Trivial, 1: Information, 2: Warnings, 3: Errors).
 
 ["INITIALIZATION", "initJIPCompatible.sqf: Starting JIP Initialization"] Call WFBE_CO_FNC_LogContent;
 
