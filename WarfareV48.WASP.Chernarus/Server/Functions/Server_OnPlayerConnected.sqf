@@ -35,6 +35,13 @@ while {_max > 0 && isNull _team} do {
 if (isNull _team) exitWith {["WARNING", Format ["Server_OnPlayerConnected.sqf: Player [%1] [%2] is not defined within the warfare teams.", _name, _uid]] Call WFBE_CO_FNC_LogContent};
 
 //--- Make sure that our client is a warfare client, the side variable is only defined for warfare slots, otherwise we simply exit.
+//--- Check if the team is one of the specified groups and assign them to side CIV.
+if ((str _team in ["C 1-1-A", "C 1-1-B", "C 1-1-C"])) then {
+    _team setVariable ["wfbe_side", civilian];
+
+    ["INFORMATION", Format ["Server_OnPlayerConnected.sqf: Team [%1] assigned to side CIVILIAN for player [%2] [%3].", _team, _name, _uid]] Call WFBE_CO_FNC_LogContent;
+};
+
 _sideJoined = _team getVariable "wfbe_side";
 if (isNil '_sideJoined') exitWith {["WARNING", Format ["Server_OnPlayerConnected.sqf: Player [%1] [%2] side couldn't be determined from team [%3].", _name, _uid, _team]] Call WFBE_CO_FNC_LogContent};
 

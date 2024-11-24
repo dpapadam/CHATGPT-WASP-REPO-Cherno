@@ -253,7 +253,7 @@ BIS_CONTROL_CAM_Handler = {
 							_closest setVariable ['sold',true];
 							_price = _get select QUERYUNITPRICE;
 							round(_price/2.5) Call ChangePlayerFunds;
-							_area = [getPos (_closest),((sidejoined) Call WFBE_CO_FNC_GetSideLogic) getVariable "wfbe_basearea"] Call WFBE_CO_FNC_GetClosestEntity2;
+							_area = [getPos (_closest),((sideJoined) Call WFBE_CO_FNC_GetSideLogic) getVariable "wfbe_basearea"] Call WFBE_CO_FNC_GetClosestEntity2;
 							_get = _area getVariable 'avail';
 
 							if (!isNull _area && _get < missionNamespace getVariable "WFBE_C_BASE_AV_STRUCTURES") then {
@@ -721,7 +721,7 @@ while {!isNil "BIS_CONTROL_CAM"} do {
 						if (_class in _defenses) then {
 							["RequestDefense", [sideJoined,_class,_pos,_dir,manningDefense]] Call WFBE_CO_FNC_SendToServer;
 							lastBuilt = _par;
-							_area = [_pos,((sidejoined) Call WFBE_CO_FNC_GetSideLogic) getVariable "wfbe_basearea"] Call WFBE_CO_FNC_GetClosestEntity2;
+							_area = [_pos,((sideJoined) Call WFBE_CO_FNC_GetSideLogic) getVariable "wfbe_basearea"] Call WFBE_CO_FNC_GetClosestEntity2;
 							_get = _area getVariable 'avail';
 							if (!isNull _area && _get > 0) then {
 							_commanderTeam =(sideJoined) Call WFBE_CO_FNC_GetCommanderTeam;

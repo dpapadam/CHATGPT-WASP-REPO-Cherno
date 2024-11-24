@@ -4124,7 +4124,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={1927.2078,544.75983,15282.436};
+					position[]={516.83649,587.36597,15050.609};
 					id=268;
 					side="CIV";
 					vehicle="Functionary1";
@@ -4825,7 +4825,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={1928.5459,544.71088,15282.444};
+					position[]={515.43512,587.4173,15048.908};
 					id=304;
 					side="CIV";
 					vehicle="Functionary1";
@@ -4848,7 +4848,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={1929.9485,544.60962,15282.411};
+					position[]={518.18024,587.02649,15048.949};
 					id=305;
 					side="CIV";
 					vehicle="Functionary1";

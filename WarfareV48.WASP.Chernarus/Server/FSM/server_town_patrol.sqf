@@ -10,8 +10,8 @@ _startSV = _location getVariable 'startingSupplyValue';
 _mode = "patrol";
 _lastMode = "nil";
 
-_patrol_range = missionNamespace getVariable 'WFBE_C_TOWNS_PATROL_RANGE';
-_defense_range = missionNamespace getVariable 'WFBE_C_TOWNS_DEFENSE_RANGE';
+_patrol_range = missionNamespace getVariable "WFBE_C_TOWNS_PATROL_RANGE";
+_defense_range = missionNamespace getVariable "WFBE_C_TOWNS_DEFENSE_RANGE";
 _aliveTeam = if (count ((units _team) Call WFBE_CO_FNC_GetLiveUnits) == 0 || isNull _team) then {false} else {true};
 
 

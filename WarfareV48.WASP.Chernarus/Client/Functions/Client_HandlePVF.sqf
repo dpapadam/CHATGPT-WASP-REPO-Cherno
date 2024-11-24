@@ -16,7 +16,6 @@ _destination = _publicVar select 0;
 if (isNil '_destination') then {_destination = 0;_exit = false};
 
 diag_log format ["DEBUG: client_handlepvf.sqf _publicVar = %1", _publicVar];
-diag_log format ["DEBUG: client_handlepvf.sqf sideJoined = %1", sideJoined];
 diag_log format ["DEBUG: client_handlepvf.sqf _destination = %1", _destination];																		
 
 if (typeName(_destination) == 'SIDE' && !(isHeadlessClient)) then {if (sideJoined == _destination) then {_exit = false}};
